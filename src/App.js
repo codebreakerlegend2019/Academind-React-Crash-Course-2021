@@ -1,15 +1,30 @@
-import Todo from './components/Todo';
+import AllMeetupsPage from "./pages/AllMeetupsPage";
+import NewMeetupPage from "./pages/NewMeetupPage";
+import FavoritesPage from "./pages/FavoritesPage";
+import { Route, Switch } from 'react-router-dom';
+import MainNavigation from "./components/layout/MainNavigation";
 
+import classes from './components/layout/MainNavigation.module.css';
 function App() {
 
-  const model1 = 'Learn React'
-  const model2 = 'Be a Fullstack Web Developer';
 
   return (
-    <div>
-      <h1>My Todos</h1>
-      <Todo text= {model1}/>
-      <Todo text= {model2}/>
+    <div className={classes.divcontainer}>
+      <MainNavigation/>
+      <Switch>
+        <Route path='/' exact>
+          <AllMeetupsPage/>
+        </Route>
+
+        <Route path='/new-meetup'>
+          <NewMeetupPage/>
+        </Route>
+
+        <Route path='/favorites'>
+          <FavoritesPage/>
+        </Route>
+
+      </Switch>
     </div>
   );
 }
